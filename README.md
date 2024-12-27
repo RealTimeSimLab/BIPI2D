@@ -36,10 +36,10 @@ Before using this repository, ensure you have the following:
 ### 1. Obtain boundary element data and initial particle distribution using the BIPI2D software
 The boundary element data requires node coordinates of each element, and the nodes need to be in the same sense such that the surface normal constructed from them points outwards.
 
-Note: Check the readme file in Folder NxtoParticleGeneration to see how to use the sample python script for generating initial particle distribution on background grid by using the boundary mesh format of Siemens NX mesh, automatically. The sample script will need to be modified to generate particle distribution on artesian grid for other boundary mesh formats of different commercial and open source softwares.
+Note: Check the example section below to see how to use the sample python script for generating initial particle distribution on background grid by using the boundary mesh format of Siemens NX mesh, automatically. The sample script will need to be modified to generate particle distribution on artesian grid for other boundary mesh formats of different commercial and open source softwares.
 
 #### i) The boundary data is provided to the software through data_geo_config/input_bulkBdryEdge.dat
-For a unit square the boundary data format the BIPI-SPH code accepts is as follows:
+For a unit square the boundary data format the BIPI-SPH code accepts is as follows in the file input_bulkBdryEdge.dat :
 ```bash
 2  0.0  0.0  0.1  0.0
 2  0.1  0.0  0.1  0.1
@@ -53,7 +53,7 @@ c) The second and third column represent coordinates of the first vertex of an e
 d) The fourth and fifth column represent  coordinates of the second vertex of an edge
 
 #### ii) The initial particle distribution is provided to the software through data_geo_config/input_particles_cartesianMesh.dat
-For initial particle distribution, particle data needs to be provided in the following format:
+For initial particle distribution, particle data needs to be provided in the following format in the file input_particles_cartesianMesh.dat:
 ```bash
 3  0.025  0.025  0.025
 3  0.075  0.025  0.025
@@ -66,6 +66,7 @@ b) The first and second column represents the coordinates of the particle
 c) The third column represents the volume of the particle
 
 #### iii) Provide details of boundary data through data_geo_config/input_param_SimSize.dat
+The ollowing format is used in input_param_SimSize.dat
 ```bash
 0  4  0.4  0.0  0.0
 ```
@@ -117,7 +118,11 @@ The packed particle configuration is saved as data_geo_config/input_PP.dat, the 
 
 ## Examples
 
-Multiple boundary data files for generating particles is provided in the folder NxtoParticleGeneration/Test_datafiles
+Multiple boundary data files for generating particles is provided in the folder ParticleGeneration/Test_datafiles
+
+In order to obtain the input files for the executable BIPI_algorithm.exe, first move the boundary file bulkBdry1D.dat from the example folder to the folder ParticleGeneration/inputCAD for BIPI_algorithm.exe. Next run the python program NxtoParticleGeneration.py following prompts on the screen which requires particle spacing value and unit conversion from bulkBdry1D.dat to the input files for BIPI_algorithm.exe (input_bulkBdryEdge.dat, input_particles_cartesianMesh.dat, input_param_SimSize.dat). Also, in addition to the input files for BIPI_algorithm .exe an image file bulkBdry.png is generated for viewing the mesh file processed as an image.
+
+Note: In the script NxtoParticleGeneration.py PLOTEL elements in NX mesh file is read as elements, but this can be changed in bulkBdryCase2D() function.
 
 ----------
 
