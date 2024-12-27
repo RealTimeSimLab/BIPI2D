@@ -48,7 +48,7 @@ For a unit square the boundary data format the BIPI-SPH code accepts is as follo
 ```
 Here, 
 a) Each row represents an element
-b) The first column represents the 2D edge type (which is irrelevant here, but is relevant for our BISPH code base for Boundary type specification)
+b) The first column represents the 2D edge type (which is irrelevant in BIPI code, but is relevant for our BISPH code base for Boundary type specification)
 c) The second and third column represent coordinates of the first vertex of an edge
 d) The fourth and fifth column represent  coordinates of the second vertex of an edge
 
@@ -62,8 +62,9 @@ For initial particle distribution, particle data needs to be provided in the fol
 ```
 Here,
 a) Each row represents a particle
-b) The first and second column represents the coordinates of the particle
-c) The third column represents the volume of the particle
+b) The first column represent the particle type (which is irrelevant in BIPI code, but is relevant for our BISPH code base for Boundary type specification)
+c) The second and third column represents the coordinates of the particle
+d) The fourth column represents the volume of the particle
 
 #### iii) Provide details of boundary data through data_geo_config/input_param_SimSize.dat
 The ollowing format is used in input_param_SimSize.dat
